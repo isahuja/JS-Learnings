@@ -3,6 +3,8 @@
 * [Closures](#closures)
 * [Promises](#promises)
 * [Prototype](#prototype)
+* [Delete](#delete)
+
 
 
 ## Closures<br>
@@ -163,4 +165,52 @@ Until now I've been extending the base object, now I create another object and t
         myCustomer.setAmountDue(2000);
         alert(myCustomer.getAmountDue());
 
+
+<br><br>
+## Delete
+
+The delete operator can be used to remove a property from an object. It will remove a property from the object if it has one. It will not touch any of the objects in the proto- type linkage.
+
+        var output = (function(x){
+            delete x;
+            return x;
+        })(0);
         
+        console.log(output);  // Output is 0
+
+
+        var x = 1;
+        var output = (function(){
+            delete x;
+            return x;
+        })();
+        
+        console.log(output);  // Output is 1
+
+
+        var x = { foo : 1};
+        var output = (function(){
+            delete x.foo;
+            return x.foo;
+        })();
+        
+        console.log(output);  // Output is "_undefined_"
+
+
+        var Employee = {
+            company: 'xyz'
+        }
+        var emp1 = Object.create(Employee);
+        delete emp1.company
+        console.log(emp1.company);
+
+Q:- What is `undefined x 1` in javascript?
+
+        var trees = ["redwood","bay","cedar","oak","maple"];
+        delete trees[3]; 
+        
+        //["redwood", "bay", "cedar", undefined × 1, "maple"]
+
+        trees[3] === undefined  //true
+        
+
