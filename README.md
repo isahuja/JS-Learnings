@@ -4,6 +4,7 @@
 * [Promises](#promises)
 * [Prototype](#prototype)
 * [Delete](#delete)
+* [Exception](#exception)
 
 
 
@@ -200,6 +201,7 @@ The delete operator can be used to remove a property from an object. It will rem
         var Employee = {
             company: 'xyz'
         }
+
         var emp1 = Object.create(Employee);
         delete emp1.company
         console.log(emp1.company);
@@ -212,5 +214,34 @@ Q:- What is `undefined x 1` in javascript?
         //["redwood", "bay", "cedar", undefined × 1, "maple"]
 
         trees[3] === undefined  //true
+
+
+<br><br>
+## Exception
+
+JavaScript provides an exception handling mechanism. 
+
+        var add = function (a, b) {
+         if (typeof a !== 'number' || typeof b !== 'number') {
+             throw {
+                 name: 'TypeError',
+                 message: 'add needs numbers'
+        }; }
+        return a + b; }
+
+
+The throw statement interrupts execution of the function. It should be given an exception object containing a name property that identifies the type of the exception, and a descriptive message property. You can also add other properties.<br>
+The exception object will be delivered to the catch clause of a try statement:
+
+        var try_it = function () { try {
+             add("seven");
+            } catch (e) {
+                document.writeln(e.name + ': ' + e.message);
+            }
+        }
+        try_it();
+
+If an exception is thrown within a try block, control will go to its catch clause.<br>
+A try statement has a single catch block that will catch all exceptions. If your han- dling depends on the type of the exception, then the exception handler will have to inspect the name to determine the type of the exception.
         
 
