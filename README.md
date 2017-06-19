@@ -1,14 +1,17 @@
 # JS Learnings
 
 [Closures](#closures)
+[Promises](#promises)
 
 
 
 ## Closures
 Before we should understand the concept of closure, there are two other features of javascript that must be understood - _first-class-functions_ and _inner-functions_
 
-    First-Class-Function: It can be constructed at runtime and assigned to variables. 
+First-Class-Function: It can be constructed at runtime and assigned to variables. 
     They can also be passed to, and returned by other functions.
+
+    
 
     
         var foo = function(){
@@ -23,7 +26,10 @@ Before we should understand the concept of closure, there are two other features
 
 
 
-    Inner-Function: It referred to as nested functions, are functions that are defined inside of another function.
+
+
+Inner-Function: It referred to as nested functions, are functions that are defined inside of another function.
+
 
 
         var add = function(v1, v2){
@@ -53,4 +59,9 @@ Closures - A closure is created when an inner function is made accessible from o
     var foo = increment(2);
 
     
-    Note: “value1” is a local variable of add(), and a non-local variable of doAdd(). Non-local variables refer to variables that are neither in the local nor the global scope.  “value2” is a local variable of doAdd().
+    
+Note: “value1” is a local variable of add(), and a non-local variable of doAdd(). Non-local variables refer to variables that are neither in the local nor the global scope.  “value2” is a local variable of doAdd().
+
+
+
+## Promises
