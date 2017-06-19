@@ -1,7 +1,8 @@
 # JS Learnings
 
-[Closures](#closures)<br>
-[Promises](#promises)
+* [Closures](#closures)
+* [Promises](#promises)
+* [Prototype](#prototype)
 
 
 ## Closures<br>
@@ -110,3 +111,56 @@ The then and catch methods can be used to attach fulfillment and rejection callb
             // Something went wrong,
             // promise has been rejected with "reason"
         });
+
+
+<br><br>
+## Prototype
+
+Every object is linked to a prototype object from which it can inherit properties. All objects created from object literals are linked to Object.prototype, an object that comes standard with JavaScript.
+
+The prototype link is used only in retrieval. If we try to retrieve a property value from an object, and if the object lacks the property name, then JavaScript attempts to retrieve the property value from the prototype object. And if that object is lacking the property, then it goes to its prototype, and so on until the process finally bottoms out with Object.prototype. If the desired property exists nowhere in the prototype chain, then the result is the undefined value. This is called delegation.
+
+The prototype relationship is a dynamic relationship. If we add a new property to a prototype, that property will immediately be visible in all of the objects that are based on that prototype
+
+
+        var Person = function(name){
+            this.name = name;
+        }
+
+        Person.prototype.getName = function() {
+            return this.name;
+        };
+
+        var john = new Person("John");
+
+        alert(john.getName());
+
+        Person.prototype.sayMyName = function() {
+            alert('Hello, my name is ' + this.getName());
+        };
+
+        john.sayMyName();
+
+
+Until now I've been extending the base object, now I create another object and then inheriting from Person.
+
+        var Customer = function(name) {
+            this.name = name;
+        };
+        
+        Customer.prototype = new Person();
+
+        var myCustomer = new Customer('Dream Inc.');
+        myCustomer.sayMyName();
+
+        Customer.prototype.setAmountDue = function (amountDue) {
+            this.amountDue = amountDue;
+        };
+        Customer.prototype.getAmountDue = function() {
+            return this.amountDue;
+        };
+
+        myCustomer.setAmountDue(2000);
+        alert(myCustomer.getAmountDue());
+
+        
